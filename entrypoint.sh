@@ -69,3 +69,10 @@ then
 else
   echo "No changes detected"
 fi
+
+if [ ! -z "$INPUT_DESTINATION_TAG" ]
+then
+  echo "Creating new tag: ${INPUT_DESTINATION_TAG}"
+  git tag -a "$INPUT_DESTINATION_TAG" HEAD -m "$INPUT_DESTINATION_TAG"
+  git push -u origin "refs/tags/${INPUT_DESTINATION_TAG}"
+fi
